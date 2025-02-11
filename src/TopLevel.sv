@@ -1,3 +1,4 @@
+// 'define TRIG1
 module Costas_TopLevel#(parameter PSK_SIGNAL_RATE_HZ = 125)(
   input logic sys_clk, // 27MHz embedded clock
   input logic pps, // 1Hz pulse
@@ -14,12 +15,10 @@ module Costas_TopLevel#(parameter PSK_SIGNAL_RATE_HZ = 125)(
   wire clock60;
   wire clock600;
 
-  assign tuning_word = freqword(5000);
-  assign phase_word = 8'd0;
-
-  counter60 counter60(.clock(clock), .clock60(clock60), .trig(load));
-  counter600 counter600(.clock(clock), .clock600(clock600));
-  counter1000 counter1000(.clock(clock), .clock1000(clk10k));
+  counter60   counter60(.clock(clk10M_w), .clock60(clock60));
+  counter600  counter600(.clock(clk10M_w), .clock600(clock600));
+  counter1000 counter1000(.clock(clk10M_w), .clock1000(clk10k));
+  master_Counter master_Counter(.clockin(clk10M_w), .clockout(mcu_costas_clk));
 
 
 endmodule

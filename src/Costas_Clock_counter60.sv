@@ -1,7 +1,6 @@
 module counter60(
 input clock,
 output wire clock60,
-output reg trig
 );
 
     reg [5:0]count = 6'd0;
@@ -11,14 +10,6 @@ output reg trig
             6'd14:  begin
                         count <= 6'd0;
                         clkstate <= 1'b1;
-                    end
-            6'd13:  begin
-                        count <= 6'd14;
-                        trig <= 0;
-                    end
-            6'd12:  begin
-                        count <= 6'd13;
-                        trig <= 1;
                     end
             6'd0:  begin
                         count <= 6'd1;
