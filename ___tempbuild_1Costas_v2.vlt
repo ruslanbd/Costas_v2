@@ -1,2 +1,0 @@
-`verilator_config
-lint_off -file "/Users/ruslangindullin/Downloads/oss-cad-suite/share/yosys/gowin/cells_sim.v"
