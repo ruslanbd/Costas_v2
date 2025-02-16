@@ -21,10 +21,5 @@ module Costas_TopLevel#(parameter PSK_SIGNAL_RATE_HZ = 125)(
   counter600 counter600(.clock(clock), .clock600(clock600));
   counter1000 counter1000(.clock(clock), .clock1000(clk10k));
 
-  assign ledr[0] = ~load;
-  assign ledr[1] = ~(clock60&(~clock600));
-  assign ledr[2] = ~clock;
-  assign update = clock60&(~clock600);
-
 
 endmodule
